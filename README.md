@@ -2,7 +2,7 @@
 
 ---
 
-> Oh Boy, is this a bad Discord bot...
+> Oh Boy, is this a bad Discord bot... <br>
 > How good I can now share this piece of dirty code to the public!
 
 ---
