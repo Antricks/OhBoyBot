@@ -48,40 +48,47 @@ class BotClient(discord.Client):
 
             if "ping" in command:
                 await message.channel.send("pong")
+
             if "countto" in command:
                 countto = int(message.content.split("countto", 2)[1].strip(), 10)
                 for i in range(countto):
                     time.sleep(0.2)
                     await message.channel.send(str(i+1))
+
             if "whoami" in command:
                 await message.channel.send(message.author.name)
+
             if "wait" in command:
                 waittime = int(message.content.split("wait", 2)[1].strip(), 10)
                 await message.channel.send(f"@{message.author.name} setting timer for {waittime} seconds...")
                 time.sleep(waittime)
                 await message.channel.send(f"@{message.author.name} time's run out!")
+
             if command == "coinflip":
                 num = random.randint(0,10)
                 if num > 5:
                     await message.channel.send(f"@{message.author.name} Kopf ({num})")
                 else:
                     await message.channel.send(f"@{message.author.name} Zahl ({num})")
+
             if command == "rolladie" or command == "würfel":
                 num = (ord(os.urandom(1)) / 255) * 6 + 1
                 num = math.floor(num)
                 await message.channel.send(f"@{message.author.name} {str(num)}")
+
             if command == "joke" or command == "witz":
                 if random.randint(0,5000) == 2500:
                     await message.channel.send(raremessage)
                     return
                 else:
                     await message.channel.send(badjokes[random.randint(0,len(badjokes)-1)])
+
             if command == "help":
                 await message.channel.send(helpmessage)
+
             if command == "allhelp":
                 await message.channel.send(file=discord.File("/home/moritz/ohboybot1/Help.pdf"))
-            if command == "bottest":
-                await message.channel.send("r!play Kalinka")
+
 client = BotClient()
 client.run(TOKEN)
 
