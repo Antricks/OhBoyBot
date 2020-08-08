@@ -31,7 +31,7 @@ helpmessage += "allhelp - Gibt eine PDF-Hilfe-Datei zurück in der alle wichtige
 
 #####################
 
-TOKEN = "GET YOUR OWN TOKEN DUDE!"
+TOKEN = "GET YOUR OWN TOKEN DUDE"
 PREFIX = "obb!"
 
 class BotClient(discord.Client):
