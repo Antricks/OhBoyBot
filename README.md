@@ -12,4 +12,6 @@
 - The `Help.pdf` file is related to all the bots most important commands on a friends Discord server.
 
 Make sure to *[register](https://discord.com/developers)* your own Bot and to change line **34** of `main.py` accordingly.
-You are free to modify this bot and do pretty much what ever you want. See `LICENSE.md` for detailed license information. 
+You are free to modify this bot and do pretty much what ever you want. See `LICENSE.txt` for detailed license information. 
+
+![LICENSE.txt](LICENSE.txt)
