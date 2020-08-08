@@ -2,8 +2,8 @@
 
 ---
 
-#### Oh Boy, is this a bad Discord bot...
-#### How good I can now share this piece of dirty code to the public!
+> Oh Boy, is this a bad Discord bot...
+> How good I can now share this piece of dirty code to the public!
 
 ---
 
