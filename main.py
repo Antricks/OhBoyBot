@@ -54,6 +54,9 @@ class BotClient(discord.Client):
                 await message.channel.send(f"Heh, {nice}, nice.")
                 break
 
+        if message.content == "3":
+            await message.channel.send("DRAI :3")
+
         if PREFIX == message.content[:len(PREFIX)].lower():
             command = message.content.lower().split(PREFIX, 2)[1].strip()
             print(f"[{message.author.name}] {command}")
