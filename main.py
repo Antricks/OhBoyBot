@@ -33,8 +33,11 @@ helpmessage += "allhelp - Gibt eine PDF-Hilfe-Datei zurück in der alle wichtige
 
 TOKEN = "NzAyNTExNDQyNTkwNDMzMjgy.XqBGww.n2N4v5oaTB7IoVfl0GGVOJclvAU"
 PREFIX = "obb!"
+LIST_DELIMITERS = ['-', '+', '=', ':', '>', '<', ' ', '\n', '\t', '.', '¿', '?',
+                   ',', '¡', '!', ';', '(', ')', '[', ']', '{', '}', '$', '#', '/', '&', '\"', '\'']
 
-nicenumbers = [420, 69, 31337, 1337, 16, 32, 64, 128, 256, 512, 1024, 2048, 5096]
+
+NICENUMBERS = [420, 69, 31337, 1337, 42, 16, 32, 64, 128, 256, 512, 1024, 2048, 5096]
 
 class BotClient(discord.Client):
     async def on_ready(self):
@@ -45,8 +48,8 @@ class BotClient(discord.Client):
         if message.author == self.user:
             return
         
-        for nice in nicenumbers:
-            if str(nice) in message.content:
+        for nice in NICENUMBERS:
+            if str(nice) in re.split('|'.join(map(re.escape, LIST_DELIMITERS)), message.content):
                 await message.channel.send(f"Heh, {nice}, nice.")
                 break
 
