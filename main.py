@@ -34,7 +34,7 @@ helpmessage += "allhelp - Gibt eine PDF-Hilfe-Datei zurück in der alle wichtige
 TOKEN = "NzAyNTExNDQyNTkwNDMzMjgy.XqBGww.n2N4v5oaTB7IoVfl0GGVOJclvAU"
 PREFIX = "obb!"
 
-nicenumbers = [420, 69, 31337, 1337]
+nicenumbers = [420, 69, 31337, 1337, 16, 32, 64, 128, 256, 512, 1024, 2048, 5096]
 
 class BotClient(discord.Client):
     async def on_ready(self):
