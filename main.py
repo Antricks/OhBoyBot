@@ -34,6 +34,8 @@ helpmessage += "allhelp - Gibt eine PDF-Hilfe-Datei zurück in der alle wichtige
 TOKEN = "NzAyNTExNDQyNTkwNDMzMjgy.XqBGww.n2N4v5oaTB7IoVfl0GGVOJclvAU"
 PREFIX = "obb!"
 
+nicenumbers = [420, 69, 31337, 1337]
+
 class BotClient(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}')
@@ -42,6 +44,11 @@ class BotClient(discord.Client):
     async def on_message(self, message):
         if message.author == self.user:
             return
+        
+        for nice in nicenumbers:
+            if str(nice) in message.content:
+                await message.channel.send(f"Heh, {nice}, nice.")
+
         if PREFIX == message.content[:len(PREFIX)].lower():
             command = message.content.lower().split(PREFIX, 2)[1].strip()
             print(f"[{message.author.name}] {command}")
