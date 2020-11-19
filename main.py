@@ -48,6 +48,7 @@ class BotClient(discord.Client):
         for nice in nicenumbers:
             if str(nice) in message.content:
                 await message.channel.send(f"Heh, {nice}, nice.")
+                break
 
         if PREFIX == message.content[:len(PREFIX)].lower():
             command = message.content.lower().split(PREFIX, 2)[1].strip()
