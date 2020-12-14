@@ -32,7 +32,9 @@ helpmessage += "allhelp - Gibt eine PDF-Hilfe-Datei zurück in der alle wichtige
 
 #####################
 
-TOKEN = "NzAyNTExNDQyNTkwNDMzMjgy.XqBGww.n2N4v5oaTB7IoVfl0GGVOJclvAU"
+with open("../OhBoyBotToken") as tokenfile:
+    TOKEN = tokenfile.read()
+
 PREFIX = "obb!"
 LIST_DELIMITERS = ['-', '+', '=', ':', '>', '<', ' ', '\n', '\t', '.', '¿', '?',
                    ',', '¡', '!', ';', '(', ')', '[', ']', '{', '}', '$', '#', '/', '&', '\"', '\'']
