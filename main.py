@@ -41,6 +41,8 @@ LIST_DELIMITERS = ['-', '+', '=', ':', '>', '<', ' ', '\n', '\t', '.', '¿', '?'
 
 
 NICENUMBERS = [420, 69, 31337, 1337, 42, 16, 32, 64, 128, 256, 512, 1024, 2048, 5096]
+DEAD = ["tot", "dead"]
+MICHAEL_JACKSON = ["m1ch43l j4xxxxn", "So wie Michael Jackson", "Jackson", "J4xxN", "Jacksssnnn"]
 
 class BotClient(discord.Client):
     async def on_ready(self):
@@ -56,8 +58,10 @@ class BotClient(discord.Client):
                 await message.channel.send(f"Heh, {nice}, nice.")
                 break
 
-        if "tot" in message.content or "Tot" in message.content:
-            await message.channel.send(f"So wie Michael Jackson")
+        for dead in DEAD:
+            if dead in re.split('|'.join(map(re.escape, LIST_DELIMITERS)), message.content):
+                await message.channel.send(random.choice(MICHAEL_JACKSON))
+                break
 
         if message.content == "3":
             await message.channel.send("DRAI :3")
