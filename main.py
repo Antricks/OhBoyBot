@@ -56,6 +56,9 @@ class BotClient(discord.Client):
                 await message.channel.send(f"Heh, {nice}, nice.")
                 break
 
+        if "tot" in message.content or "Tot" in message.content:
+            await message.channel.send(f"So wie Michael Jackson")
+
         if message.content == "3":
             await message.channel.send("DRAI :3")
 
