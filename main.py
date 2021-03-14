@@ -59,9 +59,10 @@ class BotClient(discord.Client):
                 break
 
         for dead in DEAD:
-            if dead in re.split('|'.join(map(re.escape, LIST_DELIMITERS)), message.content):
-                await message.channel.send(random.choice(MICHAEL_JACKSON))
-                break
+            for word in re.split('|'.join(map(re.escape, LIST_DELIMITERS)), message.content):
+                if dead.lower() == word.lower():
+                    await message.channel.send(random.choice(MICHAEL_JACKSON))
+                    break
 
         if message.content == "3":
             await message.channel.send("DRAI :3")
