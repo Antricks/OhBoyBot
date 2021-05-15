@@ -54,7 +54,7 @@ class BotClient(discord.Client):
             return
         
         if ":troll:" in message.content:
-            await message.channel.send(":troll:")
+            await message.channel.send(" :troll: ")
             return
 
         for nice in NICENUMBERS:
