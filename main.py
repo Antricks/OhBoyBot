@@ -58,6 +58,10 @@ class BotClient(discord.Client):
                 await message.channel.send(f"Heh, {nice}, nice.")
                 break
 
+        if "@everyone" in message.content:
+            await message.channel.send("Das hier ist ein Test! Chill guys, es ist für die Wissenschaft!")
+            break
+
         if message.content[0] == "B":
             await message.channel.send(":b:"+message.content[1:])
 
