@@ -53,10 +53,6 @@ class BotClient(discord.Client):
         if message.author == self.user:
             return
         
-        if ":troll:" in message.content:
-            await message.channel.send(" :troll: ")
-            return
-
         for nice in NICENUMBERS:
             if str(nice) in message.content:
                 await message.channel.send(f"Heh, {nice}, nice.")
