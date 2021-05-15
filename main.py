@@ -5,6 +5,7 @@ import math
 import random
 import discord
 import re
+import json
 from discord.ext import commands
 
 ###################
@@ -44,26 +45,58 @@ NICENUMBERS = [420, 69, 31337, 1337, 42, 16, 32, 64, 128, 256, 512, 1024, 2048, 
 DEAD = ["tot", "dead"]
 MICHAEL_JACKSON = ["m1ch43l j4xxxxn", "So wie Michael Jackson", "Jackson", "J4xxN", "Jacksssnnn"]
 
+def spongebob_case(s: str):
+    result = ""
+    
+    for i, c in enumerate(s):
+        if i%2 == 0:
+            result += c.lower()
+        else:
+            result += c.upper()
+
+    return result
+
 class BotClient(discord.Client):
     async def on_ready(self):
         print(f'Logged on as {self.user}')
         await self.change_presence(activity=discord.Game(name="obb!help", type=3))
 
-    async def on_message(self, message):
+    async def on_message(self, message: discord.message.Message):
         if message.author == self.user:
             return
-        
+
+        is_bad_person = False
+        with open("bad_people", "r") as bad_people_file:
+            bad_people = json.loads(bad_people_file.read())
+            if message.author.id in bad_people:
+                is_bad_person = True
+
+        if is_bad_person:
+            if ("Ich" in message.content or "ich" in message.content) and ("bin" in message.content) and ("dumm" in message.content or "Hurensohn" in message.content) and not "nicht" in message.content:
+                await message.channel.send("Ja, das bist du.")
+            elif ("Im" in message.content or "im" in message.content or "I'm" in message.content) and "stupid" in message.content:
+                await message.channel.send("Yes, you are.")
+            else:
+                await message.channel.send(spongebob_case(message.content))
+
+        if message.mention_everyone:
+            with open("bad_people", "r") as bad_people_file:
+                bad_people = json.loads(bad_people_file.read())
+                bad_people.append(message.author.id)
+            with open("bad_people", "w") as bad_people_file:
+                bad_people_file.write(json.dumps(bad_people))
+            
+            for i in range(69):
+                await message.channel.send(message.author.mention + ":clap::rage:")
+
         for nice in NICENUMBERS:
             if str(nice) in message.content:
                 await message.channel.send(f"Heh, {nice}, nice.")
                 break
 
-        if "@everyone" in message.content:
-            await message.channel.send("Das hier ist ein Test! Chill guys, es ist für die Wissenschaft!")
-            break
-
-        if message.content[0] == "B":
-            await message.channel.send(":b:"+message.content[1:])
+        if len(message.content) > 0:
+            if message.content[0] == "B":
+                await message.channel.send(":b:"+message.content[1:])
 
         for dead in DEAD:
             for word in re.split('|'.join(map(re.escape, LIST_DELIMITERS)), message.content):
