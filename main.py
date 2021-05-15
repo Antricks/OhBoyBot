@@ -53,6 +53,10 @@ class BotClient(discord.Client):
         if message.author == self.user:
             return
         
+        if ":troll:" in message.content:
+            await message.channel.send(":troll:")
+            return
+
         for nice in NICENUMBERS:
             if str(nice) in message.content:
                 await message.channel.send(f"Heh, {nice}, nice.")
@@ -66,10 +70,6 @@ class BotClient(discord.Client):
                 if dead.lower() == word.lower():
                     await message.channel.send(random.choice(MICHAEL_JACKSON))
                     break
-
-        if ":troll:" in message.content:
-            await message.channel.send(":troll:")
-            break
 
         if message.content == "3":
             await message.channel.send("DRAI :3")
