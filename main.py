@@ -54,9 +54,12 @@ class BotClient(discord.Client):
             return
         
         for nice in NICENUMBERS:
-            if str(nice) in re.split('|'.join(map(re.escape, LIST_DELIMITERS)), message.content):
+            if str(nice) in message.content:
                 await message.channel.send(f"Heh, {nice}, nice.")
                 break
+
+        if message.content[0] == "B":
+            await message.channel.send(":b:"+message.content[1:])
 
         for dead in DEAD:
             if dead in re.split('|'.join(map(re.escape, LIST_DELIMITERS)), message.content):
