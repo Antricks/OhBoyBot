@@ -67,6 +67,10 @@ class BotClient(discord.Client):
                     await message.channel.send(random.choice(MICHAEL_JACKSON))
                     break
 
+        if ":troll:" in message.content:
+            await message.channel.send(":troll:")
+            break
+
         if message.content == "3":
             await message.channel.send("DRAI :3")
 
