@@ -80,11 +80,12 @@ class BotClient(discord.Client):
                 await message.channel.send(spongebob_case(message.content))
 
         if message.mention_everyone:
-            with open("bad_people", "r") as bad_people_file:
-                bad_people = json.loads(bad_people_file.read())
-                bad_people.append(message.author.id)
-            with open("bad_people", "w") as bad_people_file:
-                bad_people_file.write(json.dumps(bad_people))
+            if not is_bad_person:
+                with open("bad_people", "r") as bad_people_file:
+                    bad_people = json.loads(bad_people_file.read())
+                    bad_people.append(message.author.id)
+                with open("bad_people", "w") as bad_people_file:
+                    bad_people_file.write(json.dumps(bad_people))
             
             for i in range(69):
                 await message.channel.send(message.author.mention + ":clap::rage:")
